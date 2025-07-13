@@ -395,8 +395,11 @@ class ImguiWgpuBackend:
             return
 
         display_width, display_height = draw_data.display_size
-        fb_width = int(display_width * draw_data.framebuffer_scale.x)
-        fb_height = int(display_height * draw_data.framebuffer_scale.y)
+
+        # TODO: not sure why draw_data.framebuffer_scale is not 1 on windows!
+        # fb_width = int(display_width * draw_data.framebuffer_scale.x)
+        # fb_height = int(display_height * draw_data.framebuffer_scale.y)
+        fb_width, fb_height = display_width, display_height
 
         if fb_width <= 0 or fb_height <= 0 or draw_data.cmd_lists_count == 0:
             return
