@@ -289,9 +289,15 @@ class ImguiWgpuBackend:
         # update the uniform buffer (mvp and gamma)
 
         l = draw_data.display_pos.x  # noqa: E741
-        r = draw_data.display_pos.x + draw_data.display_size.x / draw_data.framebuffer_scale.x
+        r = (
+            draw_data.display_pos.x
+            + draw_data.display_size.x / draw_data.framebuffer_scale.x
+        )
         t = draw_data.display_pos.y
-        b = draw_data.display_pos.y + draw_data.display_size.y / draw_data.framebuffer_scale.y
+        b = (
+            draw_data.display_pos.y
+            + draw_data.display_size.y / draw_data.framebuffer_scale.y
+        )
 
         mvp = np.array(
             [
@@ -403,7 +409,7 @@ class ImguiWgpuBackend:
         print(f"imgui framebuffer scale {draw_data.framebuffer_scale}")
         fb_width = int(display_width / draw_data.framebuffer_scale.x)
         fb_height = int(display_height / draw_data.framebuffer_scale.y)
-        print(f'calculated fb width {(fb_width, fb_height)}')
+        print(f"calculated fb width {(fb_width, fb_height)}")
 
         if fb_width <= 0 or fb_height <= 0 or draw_data.cmd_lists_count == 0:
             return
@@ -412,7 +418,7 @@ class ImguiWgpuBackend:
         self._update_vertex_buffer(draw_data)
 
         # set render state
-        print(f'sanity check fb width {(fb_width, fb_height)}')
+        print(f"sanity check fb width {(fb_width, fb_height)}")
         render_pass.set_viewport(0, 0, fb_width, fb_height, 0, 1)
 
         render_pass.set_pipeline(self._render_pipeline)
@@ -489,7 +495,7 @@ class ImguiWgpuBackend:
                     int(clip_max[0] - clip_min[0]),
                     int(clip_max[1] - clip_min[1]),
                 )
-                
+
                 # render_pass.set_scissor_rect(
                 #     0,
                 #     0,
