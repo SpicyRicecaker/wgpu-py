@@ -69,7 +69,6 @@ class ImguiRenderer:
     ):
         # Prepare present context
         self._canvas_context = canvas.get_context("wgpu")
-        embed()
 
         # if the canvas is not configured, we configure it self.
         if self._canvas_context._config is None:
@@ -150,9 +149,7 @@ class ImguiRenderer:
         draw_data = self._update_gui_function()
 
         pixel_ratio = self._canvas_context.canvas.get_pixel_ratio()
-        print(f'pixel ratio: {pixel_ratio}')
         lsize = self._canvas_context.canvas.get_logical_size()
-        print(f'logical size: {lsize}')
         self._backend.io.display_framebuffer_scale = (pixel_ratio, pixel_ratio)
         self._backend.io.display_size = lsize
 

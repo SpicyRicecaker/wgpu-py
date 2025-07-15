@@ -28,7 +28,6 @@ tests = ["numpy", "pytest", "psutil", "imageio", "anyio", "trio"]
 examples = ["pypng", "rendercanvas<=2.1.2"]
 docs = ["sphinx>7.2", "sphinx_rtd_theme"]
 dev = ["wgpu[build,codegen,lint,tests,examples,docs]"]
-testwip = ["ipython"]
 
 [project.entry-points."pyinstaller40"]
 hook-dirs = "wgpu.__pyinstaller:get_hook_dirs"
